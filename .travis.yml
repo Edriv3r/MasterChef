@@ -16,11 +16,12 @@ android:
 
 env:
   global:
-    - MY_ENV=2
+    - MALLOC_ARENA_MAX=2
 
 sudo: required
 
 before_script:
+  - chmod +x gradlew
   - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a -s "768x1280"
   - emulator -avd test -no-skin -no-audio -no-window &
   - adb wait-for-device
