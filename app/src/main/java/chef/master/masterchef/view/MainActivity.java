@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements MainView{
         setContentView(R.layout.activity_main);
 
         MVPApplication.injector.inject(this);
+
+        mainPresenter.doStuff();
     }
 
     @Override
