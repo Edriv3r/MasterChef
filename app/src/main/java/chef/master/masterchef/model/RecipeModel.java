@@ -5,9 +5,10 @@ package chef.master.masterchef.model;
  */
 public class RecipeModel {
 
-    private Recipe recipe;
+    protected Recipe recipe;
 
     public Recipe getRecipe(){
+        recipe =  new Recipe("Steak", "Yummy", "Money", "Buy");
         return recipe;
     }
 }

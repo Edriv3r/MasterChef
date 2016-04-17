@@ -9,7 +9,7 @@ import chef.master.masterchef.view.MainView;
 /**
  * Created by Ra's Al Ghul on 2016. 04. 17..
  */
-public class MainPresenter extends Presenter<MainView>{
+public class MainPresenter extends Presenter<MainView>  {
     @Inject
     public RecipeInteractor interactor;
 

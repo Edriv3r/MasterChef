@@ -9,12 +9,12 @@ public class Recipe {
     protected String ingredients;
     protected String directions;
 
-    Recipe()
+    Recipe(String title, String description, String ingredients, String directions)
     {
-        title = "Steak";
-        description = "Yummy";
-        ingredients = "Money";
-        directions = "Order";
+        this.title = title;
+        this.description = description;
+        this.ingredients = ingredients;
+        this.directions = directions;
     }
 
     public String getTitle() {
@@ -29,7 +29,5 @@ public class Recipe {
         return directions;
     }
 
-    public String getIngredients() {
-        return ingredients;
-    }
+    public String getIngredients() { return ingredients; }
 }
