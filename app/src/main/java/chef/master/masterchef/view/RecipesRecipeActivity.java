@@ -4,38 +4,43 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.orm.SugarContext;
+
 import javax.inject.Inject;
 
-import chef.master.masterchef.MVPApplication;
+import chef.master.masterchef.RecipeApplication;
 import chef.master.masterchef.R;
 import chef.master.masterchef.model.Recipe;
-import chef.master.masterchef.presenter.MainPresenter;
+import chef.master.masterchef.presenter.RecipesListPresenter;
 
-public class MainActivity extends AppCompatActivity implements MainView{
+public class RecipesRecipeActivity extends AppCompatActivity implements RecipeView {
 
     @Inject
-    MainPresenter mainPresenter;
+    RecipesListPresenter recipesListPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        MVPApplication.injector.inject(this);
-
-        mainPresenter.doStuff();
+        SugarContext.init(this);
+        RecipeApplication.injector.inject(this);
+        Recipe.listAll(Recipe.class);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        mainPresenter.attachView(this);
+        recipesListPresenter.attachView(this);
+
+        Recipe recipe = new Recipe("Lasange", "foo1", "foo2", "foo3");
+        recipe.save();
+        showRecipe(Recipe.findById(Recipe.class, 1));
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mainPresenter.detachView();
+        recipesListPresenter.detachView();
     }
 
     @Override

@@ -1,15 +1,23 @@
 package chef.master.masterchef.model;
 
+import android.content.ReceiverCallNotAllowedException;
+
+import com.orm.SugarRecord;
+
 /**
  * Created by Ra's Al Ghul on 2016. 04. 17..
  */
-public class Recipe {
+public class Recipe extends SugarRecord {
     protected String title;
     protected String description;
     protected String ingredients;
     protected String directions;
 
-    Recipe(String title, String description, String ingredients, String directions)
+    public Recipe() {
+
+    }
+
+    public Recipe(String title, String description, String ingredients, String directions)
     {
         this.title = title;
         this.description = description;

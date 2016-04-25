@@ -5,6 +5,6 @@ import chef.master.masterchef.model.Recipe;
 /**
  * Created by mobsoft on 2016. 04. 11..
  */
-public interface MainView {
+public interface RecipeView {
     void showRecipe(Recipe r);
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import javax.inject.Singleton;
 
-import chef.master.masterchef.presenter.MainPresenter;
+import chef.master.masterchef.presenter.RecipesListPresenter;
 import dagger.Module;
 import dagger.Provides;
 
@@ -26,7 +26,7 @@ public class ViewModule {
 
     @Provides
     @Singleton
-    public MainPresenter getMainPresenter() {
-        return new MainPresenter();
+    public RecipesListPresenter getMainPresenter() {
+        return new RecipesListPresenter();
     }
 }

@@ -2,7 +2,7 @@ package chef.master.masterchef.interactor;
 
 import javax.inject.Inject;
 
-import chef.master.masterchef.MVPApplication;
+import chef.master.masterchef.RecipeApplication;
 import chef.master.masterchef.model.Recipe;
 import chef.master.masterchef.model.RecipeModel;
 
@@ -14,7 +14,7 @@ public class RecipeInteractor {
     RecipeModel model;
 
     public RecipeInteractor(){
-        MVPApplication.injector.inject(this);
+        RecipeApplication.injector.inject(this);
     }
 
     public Recipe getRecipe(){

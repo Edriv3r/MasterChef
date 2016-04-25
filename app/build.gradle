@@ -5,6 +5,15 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
+    productFlavors {
+        devel {
+            applicationId "chef.master.masterchef.devel"
+        }
+        prod {
+            applicationId "chef.master.masterchef.prod"
+        }
+    }
+
     defaultConfig {
         applicationId "chef.master.masterchef"
         minSdkVersion 15
@@ -18,6 +27,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -31,4 +41,7 @@ dependencies {
     compile 'com.google.dagger:dagger:2.0.1'
     apt "com.google.dagger:dagger-compiler:2.0.1"
     provided 'javax.annotation:jsr250-api:1.0'
+
+    // SugarORM
+    compile 'com.github.satyan:sugar:1.4'
 }
