@@ -1,6 +1,7 @@
 package chef.master.masterchef.model;
 
 import android.content.ReceiverCallNotAllowedException;
+import android.media.Image;
 
 import com.orm.SugarRecord;
 
@@ -12,6 +13,7 @@ public class Recipe extends SugarRecord {
     protected String description;
     protected String ingredients;
     protected String directions;
+    protected Image image;
 
     public Recipe() {
 
