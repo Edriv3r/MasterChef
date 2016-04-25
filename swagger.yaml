@@ -1,0 +1,98 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: RecipeList API
+  description: List and upload recipes.
+  version: "1.0.0"
+# the domain of the service
+host: api.masterchefrecipes.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /recipes:
+    get:
+      summary: Get all recipes
+      description: |
+        The Recipes endpoint returns information about the available recipes. The response includes the recipe name, 
+        needed ingredients, directions and the image url.
+      tags:
+        - Recipes
+      responses:
+        200:
+          description: List of every recipe.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Recipe'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /recipe/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          type: number
+          description: ID of the recipe
+          required: true
+      summary: Get one recipe
+      description: |
+        This endpoint returns information of the desired recipe, selected with id.
+      tags:
+        - Recipes
+      responses:
+        200:
+          description: Information of a recipe.
+  /add:
+    post:
+      summary: Add a recipe
+      description: |
+        This endpoint adds the recipe to the database.
+      tags:
+        - Recipes
+      responses:
+        200:
+          description: Information of a recipe.
+          schema:
+            type: boolean
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+definitions:
+  Recipe:
+    type: object
+    properties:
+      recipe_id:
+        type: number
+        description: Unique identifier representing a specific recipe.
+      name:
+        type: string
+        description: Name of the recipe.
+      ingredients:
+        type: string
+        description: Ingredients of the recipe.
+      directions:
+        type: string
+        description: Directions of the recipe.
+      image:
+        type: string
+        description: Image URL representing the recipe.
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
