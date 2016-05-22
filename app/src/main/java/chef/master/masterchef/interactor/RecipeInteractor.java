@@ -21,6 +21,7 @@ public class RecipeInteractor {
     @Inject
     RecipesApi recipesApi;
 
+    @Inject
     public RecipeInteractor() {
         RecipeApplication.injector.inject(this);
     }

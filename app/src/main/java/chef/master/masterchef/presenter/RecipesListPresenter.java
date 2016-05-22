@@ -13,6 +13,7 @@ public class RecipesListPresenter extends Presenter<RecipeView>  {
     @Inject
     public RecipeInteractor interactor;
 
+    @Inject
     public RecipesListPresenter() {
         RecipeApplication.injector.inject(this);
     }
