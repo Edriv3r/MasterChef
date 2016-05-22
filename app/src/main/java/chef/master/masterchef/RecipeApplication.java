@@ -2,8 +2,6 @@ package chef.master.masterchef;
 
 import android.app.Application;
 
-import com.orm.SugarContext;
-
 import chef.master.masterchef.view.ViewModule;
 
 /**
@@ -17,5 +15,16 @@ public class RecipeApplication extends Application{
     public void onCreate() {
         super.onCreate();
         injector = DaggerRecipeComponent.builder().viewModule(new ViewModule(this)).build();
+        if (BuildConfig.FLAVOR.equals("mock")) {
+            injector = DaggerMockRecipeComponent.builder().viewModule(new ViewModule(this)).build();
+        }
+        else {
+            injector = DaggerRecipeComponent.builder().viewModule(new ViewModule(this)).build();
+        }
+    }
+
+    public void setInjector(RecipeComponent appComponent) {
+        injector = appComponent;
+        injector.inject(this);
     }
 }

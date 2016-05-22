@@ -5,13 +5,13 @@
     <application
         android:name=".RecipeApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_mood_white_24dp"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="DATABASE"
-            android:value="recipe_2.db" />
+            android:value="masterChefData.db" />
         <meta-data
             android:name="VERSION"
             android:value="1" />
@@ -22,7 +22,7 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="chef.master" />
 
-        <activity android:name=".view.RecipesRecipeActivity">
+        <activity android:name=".view.RecipesListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
