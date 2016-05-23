@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.orm.SugarContext;
 
 import java.util.ArrayList;
@@ -18,6 +21,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import chef.master.masterchef.R;
+import chef.master.masterchef.RecipeApplication;
 import chef.master.masterchef.adapter.RecipesAdapter;
 import chef.master.masterchef.model.Recipe;
 import chef.master.masterchef.presenter.DownloadedPresenter;
@@ -25,6 +29,8 @@ import chef.master.masterchef.presenter.DownloadedPresenter;
 public class DownloadedRecipesActivity extends AppCompatActivity implements RecipeView{
     private List<Recipe> recipesList = new ArrayList<>();
     RecipesAdapter recipesAdapter;
+
+    private Tracker mTracker;
 
     @Inject
     DownloadedPresenter downloadedPresenter;
@@ -44,6 +50,9 @@ public class DownloadedRecipesActivity extends AppCompatActivity implements Reci
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(recipesAdapter);
+
+        RecipeApplication application = (RecipeApplication) getApplication();
+        mTracker = application.getDefaultTracker();
     }
 
     @Override
@@ -51,6 +60,15 @@ public class DownloadedRecipesActivity extends AppCompatActivity implements Reci
         super.onStart();
         recipesList = Recipe.listAll(Recipe.class);
         showRecipe();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String name = "DownloadedRecipesActivity";
+        Log.i("Analytics", name);
+        mTracker.setScreenName(name);
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     @Override
@@ -74,18 +92,34 @@ public class DownloadedRecipesActivity extends AppCompatActivity implements Reci
         switch(item.getItemId())
         {
             case R.id.online:
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("Action")
+                        .setAction("Online")
+                        .build());
                 Intent intentOnline = new Intent(this, RecipesListActivity.class);
                 this.startActivity(intentOnline);
                 break;
             case R.id.offline:
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("Action")
+                        .setAction("Offline")
+                        .build());
                 Intent intentOffline = new Intent(this, DownloadedRecipesActivity.class);
                 this.startActivity(intentOffline);
                 break;
             case R.id.create:
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("Action")
+                        .setAction("Create")
+                        .build());
                 Intent intentCreate = new Intent(this, UploadRecipeActivity.class);
                 this.startActivity(intentCreate);
                 break;
             case R.id.about:
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("Action")
+                        .setAction("About")
+                        .build());
                 Intent intentAbout = new Intent(this, AboutActivity.class);
                 this.startActivity(intentAbout);
                 break;
