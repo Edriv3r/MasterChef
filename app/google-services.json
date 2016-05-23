@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "964714289551",
+    "project_id": "masterchef-6d3a8"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964714289551:android:4138bf8a02a00e5b",
+        "android_client_info": {
+          "package_name": "chef.master.masterchef"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXGwiYzzLDV_wHWuHvQ70EsOPBjLZzdfo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-78159974-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964714289551:android:723e6ae3dfdf907a",
+        "android_client_info": {
+          "package_name": "chef.master.masterchef.devel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXGwiYzzLDV_wHWuHvQ70EsOPBjLZzdfo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-78159974-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
